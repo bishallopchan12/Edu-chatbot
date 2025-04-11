@@ -1,0 +1,94 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Namaste", "Hey", "Good morning", "Good evening"],
+      "responses": ["Namaste! How can I assist you today?", "Hello! How may I help you?", "Hi there! What information are you looking for?"]
+    },
+    {
+      "tag": "course_info",
+      "patterns": ["What courses are available?", "Which programs can I study?", "List of available courses"],
+      "responses": ["You can find courses in Science, Management, Humanities, and Technical fields such as Engineering, IT, and Medical studies."]
+    },
+    {
+      "tag": "university_info",
+      "patterns": ["Which universities are in Nepal?", "List of universities in Nepal", "Best universities for higher education"],
+      "responses": ["Nepal has several universities including Tribhuvan University, Kathmandu University, Purbanchal University, Pokhara University, and many private institutions."]
+    },
+    {
+      "tag": "scholarship_info",
+      "patterns": ["Are there scholarships for students?", "Scholarships in Nepal", "How can I get a scholarship?"],
+      "responses": ["Yes, various scholarships are available for SEE, +2, Bachelor's, and Master's students. Government and private institutions offer need-based and merit-based scholarships."]
+    },
+    {
+      "tag": "admission_info",
+      "patterns": ["How to apply for admission?", "Admission process in Nepal", "What is the admission procedure?"],
+      "responses": ["Admission requirements vary by college and university. Many require entrance exams, while others have a direct admission process."]
+    },
+    {
+      "tag": "deadline",
+      "patterns": ["When is the admission deadline?", "Application deadline for colleges", "Last date for admission"],
+      "responses": ["Admission deadlines differ by institution. It’s best to check the official website of your chosen university or college."]
+    },
+    {
+      "tag": "exam_info",
+      "patterns": ["When are the SEE exams?", "What is the date for entrance exams?", "Exam schedule for TU and KU"],
+      "responses": ["SEE exams are usually held in March-April, and TU/KU entrance exams have different schedules. Visit the official websites for the latest updates."]
+    },
+    {
+      "tag": "entrance_exam",
+      "patterns": ["Do I need to take an entrance exam?", "Entrance exam for Bachelor’s programs", "Is an entrance exam required for Engineering?"],
+      "responses": ["Yes, entrance exams are required for competitive programs like Engineering, MBBS, and Management. The difficulty and format vary by university."]
+    },
+    {
+      "tag": "technical_courses",
+      "patterns": ["What are some technical courses in Nepal?", "Where can I study IT or Engineering?", "Best colleges for Computer Science"],
+      "responses": ["You can study Engineering, IT, and Vocational courses at institutions like Pulchowk Engineering Campus, IOE, KU, and private colleges offering Computer Science programs."]
+    },
+    {
+      "tag": "study_abroad",
+      "patterns": ["How can I study abroad?", "What are the requirements for studying in the USA, Australia, or Canada?", "Study visa process"],
+      "responses": ["To study abroad, you need academic transcripts, English proficiency tests (IELTS/TOEFL), SOP, and financial proof. Visit an education consultancy for guidance."]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["How can I contact for more information?", "Customer support", "Help with admission process"],
+      "responses": ["For further assistance, visit our official website, email us at support@eduhelpnepal.com, or call us at +977-1-XXXXX."]
+    },
+    {
+      "tag": "vocational_training",
+      "patterns": ["Where can I learn vocational skills?", "Short-term skill training in Nepal", "Vocational courses available"],
+      "responses": ["You can enroll in vocational training programs offered by CTEVT, Nepal Academy of Tourism and Hotel Management, and various private institutions."]
+    },
+    {
+      "tag": "student_loans",
+      "patterns": ["Are student loans available in Nepal?", "How to apply for an education loan?", "Student loan process"],
+      "responses": ["Yes, many banks offer student loans for higher education. Requirements include academic records, collateral, and a co-signer. Visit your preferred bank for details."]
+    },
+    {
+      "tag": "career_counseling",
+      "patterns": ["Where can I get career counseling?", "Best career guidance services", "Help with choosing a career"],
+      "responses": ["You can visit career counseling centers such as LOCUS, NIEC, or your university's career guidance department for expert advice."]
+    },
+    {
+      "tag": "online_education",
+      "patterns": ["Are there online courses in Nepal?", "Best online learning platforms", "Can I study online in Nepal?"],
+      "responses": ["Yes, you can access online courses from platforms like eLearning Nepal, Coursera, Udemy, and Open University Nepal."]
+    },
+    {
+      "tag": "hostel_info",
+      "patterns": ["Are hostels available in Nepal for students?", "Hostel facilities in Kathmandu", "Best student hostels in Nepal"],
+      "responses": ["Yes, there are many hostels available for students in Nepal, including university hostels and private accommodations. Check with your institution for details."]
+    },
+    {
+      "tag": "internship_opportunities",
+      "patterns": ["Where can I find internships?", "Internship programs in Nepal", "Best companies offering internships"],
+      "responses": ["You can find internship opportunities through university career services, job portals, and company websites."]
+    },
+    {
+      "tag": "university_rankings",
+      "patterns": ["Top universities in Nepal", "University rankings in Nepal", "Best universities to study"],
+      "responses": ["Tribhuvan University, Kathmandu University, and Pokhara University are among the top-ranked universities in Nepal."]
+    }
+  ]
+}

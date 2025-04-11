@@ -1,0 +1,252 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hi", "hello", "hey", "howdy", "hii", "namaste", "good morning", "good evening", "greetings",
+        "hi there", "hello there", "hey there", "how are you", "what's up", "hi bot", "hello bot",
+        "hey bot", "good day", "hi hi", "hello hello", "namastey", "namaskar", "sup"
+      ],
+      "responses": ["Hello! 🌟 Welcome to Entrance Gateway—your guide to education in Nepal."]
+    },
+    {
+      "tag": "course_categories",
+      "patterns": [
+        "show courses", "list courses", "what courses are available", "courses", "course list",
+        "what courses do you offer", "available courses", "course options", "what can i study",
+        "what programs are there", "list of courses", "show me courses", "what courses can i take"
+      ],
+      "responses": ["Let me show you the available courses!"]
+    },
+    {
+      "tag": "college_list",
+      "patterns": [
+        "show colleges", "list colleges", "what colleges are there", "colleges in nepal", "college list",
+        "which colleges are available", "tell me about colleges", "colleges near me", "best colleges in nepal",
+        "where can i study", "list of colleges", "show me colleges"
+      ],
+      "responses": ["Here are some colleges in Nepal for you to explore!"]
+    },
+    {
+      "tag": "universities",
+      "patterns": [
+        "show universities", "list universities", "what universities are there", "universities in nepal",
+        "university list", "which universities are available", "tell me about universities",
+        "best universities in nepal", "where can i study in university", "list of universities",
+        "show me universities"
+      ],
+      "responses": ["Here are some universities in Nepal for you to explore!"]
+    },
+    {
+      "tag": "notes",
+      "patterns": [
+        "notes", "study notes", "course notes", "where can I find notes", "show notes",
+        "study materials", "notes for courses", "download notes", "get notes", "need notes",
+        "notes for exam", "revision notes", "lecture notes"
+      ],
+      "responses": ["📖 Looking for study notes? I can help with that! Which course would you like notes for?"]
+    },
+    {
+      "tag": "syllabus",
+      "patterns": [
+        "syllabus", "course syllabus", "what's the syllabus", "show syllabus",
+        "tell me about syllabus", "syllabus for courses", "course curriculum",
+        "what’s in the syllabus", "syllabus details", "get syllabus",
+        "need syllabus", "syllabus for exam"
+      ],
+      "responses": ["📋 I can show you the syllabus! Which course are you interested in?"]
+    },
+    {
+      "tag": "blogs",
+      "patterns": [
+        "blogs", "show blogs", "list blogs", "educational blogs", "articles",
+        "read blogs", "what blogs do you have", "study tips", "education articles",
+        "blog posts", "latest blogs", "blog about education"
+      ],
+      "responses": ["✍️ Here are some educational blogs for you to read!"]
+    },
+    {
+      "tag": "quiz_redirect",
+      "patterns": [
+        "quiz", "quizpro", "take a quiz", "educational quiz", "test my knowledge",
+        "challenge myself", "quiz me", "practice quiz", "exam quiz",
+        "knowledge test", "try quizpro", "quiz challenge"
+      ],
+      "responses": ["🧪 Ready to test your knowledge? Take our QuizPro challenge!"]
+    },
+    {
+      "tag": "sign_in",
+      "patterns": [
+        "sign in", "login", "log in", "sign into my account", "access my account",
+        "my account", "enter my account", "sign in to entrance gateway",
+        "login to my account", "account access"
+      ],
+      "responses": ["🔐 Please sign in to your Entrance Gateway account. [Sign in link placeholder]"]
+    },
+    {
+      "tag": "sign_up",
+      "patterns": [
+        "sign up", "register", "create account", "make an account", "join entrance gateway",
+        "new account", "signup", "create a profile", "register for entrance gateway",
+        "join now", "get started"
+      ],
+      "responses": ["📝 Let’s get you started! Sign up for an Entrance Gateway account. [Sign up link placeholder]"]
+    },
+    {
+      "tag": "course_fees",
+      "patterns": [
+        "how much are the fees", "course fees", "what are the fees", "fees for courses",
+        "how much does it cost", "tuition fees", "course cost", "price of course",
+        "fees details", "how expensive is it", "cost of studying"
+      ],
+      "responses": ["💰 I can help with that! Which course would you like to know the fees for?"]
+    },
+    {
+      "tag": "duration_info",
+      "patterns": [
+        "how long is the course", "course duration", "duration of courses", "how many years",
+        "how long does it take", "course length", "how many months", "study duration",
+        "course time", "duration details"
+      ],
+      "responses": ["⏳ I can tell you the duration! Which course are you interested in?"]
+    },
+    {
+      "tag": "eligibility_info",
+      "patterns": [
+        "who can apply", "eligibility", "course eligibility", "am I eligible",
+        "eligibility criteria", "requirements for course", "can I join the course",
+        "what are the requirements", "eligibility for studying", "course requirements"
+      ],
+      "responses": ["✅ Let’s check the eligibility! Which course are you interested in?"]
+    },
+    {
+      "tag": "career_options",
+      "patterns": [
+        "what can I do after", "career options", "jobs after course", "career paths",
+        "what jobs can I get", "future after course", "career opportunities",
+        "what’s next after studying", "job prospects", "career after study"
+      ],
+      "responses": ["🌟 Let’s explore career options! Which course are you interested in?"]
+    },
+    {
+      "tag": "scholarship_info",
+      "patterns": [
+        "scholarships", "are there scholarships", "scholarship for course", "financial aid",
+        "scholarship options", "can I get a scholarship", "scholarship details",
+        "how to get scholarship", "scholarship in nepal", "funding for study"
+      ],
+      "responses": ["🎓 I can help with scholarships! Which course are you looking for scholarship information on?"]
+    },
+    {
+      "tag": "application_process",
+      "patterns": [
+        "how to apply", "application process", "apply for course", "how do I apply",
+        "course admission", "admission process", "how to get admission",
+        "apply for admission", "admission details", "application steps"
+      ],
+      "responses": ["📝 Let’s get you started with the application! Which course would you like to apply for?"]
+    },
+    {
+      "tag": "best_course",
+      "patterns": [
+        "best course", "what’s the best course", "recommend a course", "top courses",
+        "best course in nepal", "which course is best", "popular courses",
+        "best program to study", "trending courses", "suggest a course"
+      ],
+      "responses": ["📚 Let’s find the best course for you! What are your interests? (e.g., Science, Management, Health)"]
+    },
+    {
+      "tag": "best_college",
+      "patterns": [
+        "best college", "top colleges", "best college in nepal", "recommend a college",
+        "which college is best", "top colleges in nepal", "best place to study",
+        "popular colleges", "suggest a college", "best institute"
+      ],
+      "responses": ["🏫 Looking for the best college? What course are you interested in studying?"]
+    },
+    {
+      "tag": "exam_preparation",
+      "patterns": [
+        "exam preparation", "how to prepare for exams", "study tips for exams",
+        "exam tips", "prepare for exams", "exam study guide", "how to study for exams",
+        "exam prep", "study strategies", "exam help"
+      ],
+      "responses": ["📖 Need help with exam preparation? I can share some tips or direct you to study notes! What are you preparing for?"]
+    },
+    {
+      "tag": "entrance_exam",
+      "patterns": [
+        "entrance exam", "exam for admission", "entrance test", "how to prepare for entrance exam",
+        "entrance exam in nepal", "admission test", "exam for college",
+        "entrance exam details", "entrance exam tips", "entrance exam preparation"
+      ],
+      "responses": ["📝 Preparing for an entrance exam? I can help! Which course or college are you applying for?"]
+    },
+    {
+      "tag": "location",
+      "patterns": [
+        "where is the college", "college location", "university location", "where is it located",
+        "location of college", "where can I study in kathmandu", "colleges in lalitpur",
+        "location details", "where is the university", "college address"
+      ],
+      "responses": ["📍 I can help with the location! Which college or university are you looking for?"]
+    },
+    {
+      "tag": "contact_us",
+      "patterns": [
+        "contact us", "how to contact", "get in touch", "contact entrance gateway",
+        "support", "help me", "reach out", "contact details",
+        "need assistance", "customer support", "cpontatc", "contatc", "conatct"
+      ],
+      "responses": ["📩 I’m here to assist! Please tell me your name so we can get in touch."]
+    },
+    {
+      "tag": "study_abroad",
+      "patterns": [
+        "study abroad", "study overseas", "international study", "abroad programs",
+        "study in foreign countries", "how to study abroad", "study abroad from nepal",
+        "international education", "abroad courses", "study overseas options"
+      ],
+      "responses": ["🌍 Interested in studying abroad? I can help! What country or course are you considering?"]
+    },
+    {
+      "tag": "online_courses",
+      "patterns": [
+        "online courses", "study online", "online study programs", "e-learning",
+        "online education", "distance learning", "virtual courses",
+        "online learning in nepal", "study from home", "online study options"
+      ],
+      "responses": ["💻 Looking for online courses? Let me help you find some options! What subject are you interested in?"]
+    },
+    {
+      "tag": "thank_you",
+      "patterns": [
+        "thank you", "thanks", "thank you so much", "thanks a lot", "appreciate it",
+        "great thanks", "thank you bot", "thanks for the help", "thx", "ty"
+      ],
+      "responses": ["😊 You're welcome! I'm here to help anytime!"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye", "goodbye", "see you", "later", "take care", "i’m leaving",
+        "good bye", "see you later", "bye bye", "i’ll go now"
+      ],
+      "responses": ["👋 Goodbye! Feel free to come back if you have more questions!"]
+    },
+    {
+      "tag": "reset",
+      "patterns": [
+        "reset", "start over", "clear", "restart", "start again",
+        "reset chat", "clear conversation", "begin again",
+        "fresh start", "start from beginning"
+      ],
+      "responses": ["Let’s start fresh! How can I assist you today?"]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [""],
+      "responses": ["Hmm, I’m not sure! Let’s start fresh—pick an option!"]
+    }
+  ]
+}
