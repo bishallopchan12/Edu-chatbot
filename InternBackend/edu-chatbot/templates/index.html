@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrance Gateway - Educational Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        nav {
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #0056b3;
+        }
+        .quiz-button {
+            background: #ffca28;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        .quiz-button:hover {
+            transform: scale(1.05);
+            background: #ffb300;
+        }
+        .colleges {
+            display: flex;
+            gap: 20px;
+            padding: 100px 20px 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .college-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            width: 30%;
+            max-width: 300px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .college-card:hover {
+            transform: translateY(-5px);
+        }
+        .college-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            max-width: 90%;
+            z-index: 1000;
+        }
+        .chatbot-button {
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .chatbot-button:hover {
+            transform: scale(1.1);
+        }
+        .chat-window {
+            display: none;
+            flex-direction: column;
+            height: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+            animation: slideIn 0.3s ease;
+        }
+        .chat-header {
+            background: linear-gradient(45deg, #007bff, #00c4ff);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .chat-header-title {
+            flex: 1;
+            text-align: center;
+            font-size: 18px;
+        }
+        .chat-header .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            height: 400px;
+            background: #f9f9f9;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+            transition: border 0.3s ease;
+        }
+        .chat-input input:focus {
+            border: 1px solid #007bff;
+        }
+        .chat-input button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .chat-input button:hover {
+            background: #0056b3;
+        }
+        .message {
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin: 8px 0;
+            max-width: 80%;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+            line-height: 1.4;
+        }
+        .user-message {
+            background: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .user-message .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-left: 10px;
+            object-fit: cover;
+        }
+        .bot-message {
+            background: #e8f0fe;
+            color: #333;
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+        }
+        .bot-message .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .loading-message {
+            background: #f1f1f1;
+            color: #007bff;
+            font-style: italic;
+            align-self: flex-start;
+        }
+        .buttons {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        .chat-button {
+            padding: 8px 16px;
+            margin: 4px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .chat-button:hover {
+            transform: translateY(-2px);
+        }
+        /* Button styles based on emojis */
+        .chat-button:contains("📚") { background: #4CAF50; color: white; }
+        .chat-button:contains("🔬") { background: #2196F3; color: white; }
+        .chat-button:contains("💼") { background: #FF9800; color: white; }
+        .chat-button:contains("🏫") { background: #2196F3; color: white; }
+        .chat-button:contains("💰") { background: #FF9800; color: white; }
+        .chat-button:contains("⏳") { background: #F44336; color: white; }
+        .chat-button:contains("✅") { background: #8BC34A; color: white; }
+        .chat-button:contains("🌟") { background: #9C27B0; color: white; }
+        .chat-button:contains("🎓") { background: #673AB7; color: white; }
+        .chat-button:contains("📝") { background: #E91E63; color: white; }
+        .chat-button:contains("🧪") { background: #00BCD4; color: white; }
+        .chat-button:contains("📩") { background: #009688; color: white; }
+        .chat-button:contains("🏠") { background: #795548; color: white; }
+        .chat-button:contains("📖") { background: #9E9E9E; color: white; }
+        .chat-button:contains("📋") { background: #3F51B5; color: white; }
+        .chat-button:contains("✍️") { background: #F57C00; color: white; }
+        .chat-button:contains("⚖️") { background: #D32F2F; color: white; }
+        .chat-button:contains("🏥") { background: #4CAF50; color: white; }
+        .chat-button:contains("🌱") { background: #8BC34A; color: white; }
+        .chat-button:contains("📺") { background: #F44336; color: white; }
+        .chat-button:contains("🖌️") { background: #9C27B0; color: white; }
+        .chat-button:contains("🔧") { background: #FF9800; color: white; }
+        .chat-button:contains("👨‍💼") { background: #673AB7; color: white; }
+        .breadcrumb {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .chatbot-container {
+                width: 100%;
+                bottom: 0;
+                right: 0;
+            }
+            .chat-window {
+                height: 100vh;
+                border-radius: 0;
+            }
+            .chat-header {
+                border-radius: 0;
+            }
+            .college-card {
+                width: 100%;
+                max-width: none;
+            }
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            nav a {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <nav>
+        <span class="brand-logo">Entrance Gateway</span>
+        <div>
+            <a href="/courses">Courses</a>
+            <a href="/colleges">Colleges</a>
+            <a href="/notes">Notes</a>
+            <a href="/syllabus">Syllabus</a>
+            <a href="/universities">Universities</a>
+            <a href="/blogs">Blogs</a>
+            <button class="quiz-button" onclick="window.location.href='/quiz'">QuizPro</button>
+            <a href="/login">Sign In</a>
+            <a href="/signup">Sign Up</a>
+        </div>
+    </nav>
+    <div class="colleges" id="colleges">
+        Colleges will be populated via JavaScript -->
+    <!-- </div> -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span class="chat-header-title">EduBot <span style="font-size: 12px;">Powered by Samasta Group Nepal</span></span>
+                <img src="{{ url_for('static', filename='Bishal.jpeg') }}" alt="Bot Avatar" class="avatar">
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message... 😊" onkeydown="checkEnter(event)">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chatContext = {"state": "start", "history": []};
+
+        // Fetch and display colleges
+        async function loadColleges() {
+            try {
+                const response = await fetch('/colleges');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                const collegesDiv = document.getElementById("colleges");
+                if (data.colleges.length > 0) {
+                    collegesDiv.innerHTML = '<h2 style="width: 100%; text-align: center; color: #333;">Colleges in Nepal</h2><p style="width: 100%; text-align: center; color: #666;">Explore the best colleges in Nepal to find your perfect fit!</p>';
+                    data.colleges.forEach(college => {
+                        const card = document.createElement("div");
+                        card.className = "college-card";
+                        card.innerHTML = `
+                            <img src="${college.image_url || 'https://via.placeholder.com/300'}" alt="${college.name}">
+                            <h3 style="margin: 10px 0; color: #333;">${college.name}</h3>
+                            <p style="color: #666; font-size: 14px;">${college.description}</p>
+                            <a href="${college.website}" target="_blank" style="color: #007bff; text-decoration: none;">Visit Website</a>
+                        `;
+                        collegesDiv.appendChild(card);
+                    });
+                } else {
+                    collegesDiv.innerHTML = `<h2 style="width: 100%; text-align: center; color: #333;">Colleges in Nepal</h2><p style="width: 100%; text-align: center; color: #666;">${data.message || 'College information is not available. Please explore courses or contact us for college details.'}</p>`;
+                }
+            } catch (error) {
+                console.error('Error loading colleges:', error);
+                document.getElementById("colleges").innerHTML = '<h2 style="width: 100%; text-align: center; color: #333;">Colleges in Nepal</h2><p style="width: 100%; text-align: center; color: #666;">Oops! Couldn’t load colleges. Please try again or contact us at 977-9818676198.</p>';
+            }
+        }
+
+        // Fetch and display courses
+        async function loadCourses() {
+            try {
+                const response = await fetch('/courses');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                console.log('Courses loaded:', data.courses);
+            } catch (error) {
+                console.error('Error loading courses:', error);
+            }
+        }
+
+        window.onload = function() {
+            loadColleges();
+            loadCourses();
+            const loadingDiv = showLoading();
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: "hi", context: chatContext })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                removeLoading(loadingDiv);
+                addMessage("Welcome to Entrance Gateway! 🌟 I'm EduBot, your guide to educational opportunities in Nepal. How can I assist you today? Choose an option below to explore courses, colleges, quizzes, and more!", true);
+                chatContext = data.context;
+                if (data.buttons && data.buttons.length > 0) {
+                    addButtons(data.buttons);
+                }
+            })
+            .catch(error => {
+                removeLoading(loadingDiv);
+                addMessage("Oops! Couldn’t start the chat. Please contact us at phone number 977-9818676198 or email info@entrancegateway.com for assistance. (Error: " + error.message + ")", true);
+                console.error('Error:', error);
+            });
+        };
+
+        function toggleChat() {
+            const chatWindow = document.getElementById("chatWindow");
+            chatWindow.style.display = chatWindow.style.display === "none" ? "flex" : "none";
+        }
+
+        function addMessage(message, isBot = true) {
+            const chatMessages = document.getElementById("chatMessages");
+            const msgDiv = document.createElement("div");
+            msgDiv.className = isBot ? "message bot-message" : "message user-message";
+            const [text, breadcrumb] = message.split('\n');
+            if (isBot) {
+                msgDiv.innerHTML = `
+                    <img src="{{ url_for('static', filename='Bishal.jpeg') }}" alt="Bot Avatar" class="avatar">
+                    <span>${text || ''}</span>
+                    ${breadcrumb ? `<p class="breadcrumb">${breadcrumb}</p>` : ''}
+                `;
+            } else {
+                msgDiv.innerHTML = `
+                    <span>${text || ''}</span>
+                    ${breadcrumb ? `<p class="breadcrumb">${breadcrumb}</p>` : ''}
+                    <img src="https://i.pravatar.cc/150?img=5" alt="User Avatar" class="avatar">
+                `;
+            }
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            msgDiv.style.animation = 'fadeIn 0.3s forwards';
+        }
+
+        function addButtons(buttons) {
+            const chatMessages = document.getElementById("chatMessages");
+            const buttonsDiv = document.createElement("div");
+            buttonsDiv.className = "buttons";
+            buttons.forEach(button => {
+                const btn = document.createElement("button");
+                btn.className = "chat-button";
+                btn.innerHTML = `<span>${button}</span>`;
+                btn.onclick = () => sendButtonClick(button);
+                buttonsDiv.appendChild(btn);
+            });
+            chatMessages.appendChild(buttonsDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showLoading() {
+            const chatMessages = document.getElementById("chatMessages");
+            const loadingDiv = document.createElement("div");
+            loadingDiv.className = "message loading-message";
+            loadingDiv.innerHTML = `<img src="{{ url_for('static', filename='Bishal.jpeg') }}" alt="Bot Avatar" class="avatar"><span>EduBot is thinking...</span>`;
+            chatMessages.appendChild(loadingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return loadingDiv;
+        }
+
+        function removeLoading(loadingDiv) {
+            if (loadingDiv && chatMessages.contains(loadingDiv)) {
+                loadingDiv.remove();
+            }
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById("userInput");
+            const message = userInput.value.trim();
+
+            if (message === "") return;
+
+            addMessage(message, false);
+            const loadingDiv = showLoading();
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message, context: chatContext })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                removeLoading(loadingDiv);
+                addMessage(data.response, true);
+                chatContext = data.context;
+                if (data.buttons && data.buttons.length > 0) {
+                    addButtons(data.buttons);
+                }
+            } catch (error) {
+                removeLoading(loadingDiv);
+                addMessage("Oops! Something went wrong. Please contact us at phone number 977-9818676198 or email info@entrancegateway.com for assistance. (Error: " + error.message + ")", true);
+                console.error('Error:', error);
+            }
+
+            userInput.value = "";
+        }
+
+        async function sendButtonClick(button) {
+            addMessage(button, false);
+            const loadingDiv = showLoading();
+
+            try {
+                const response = await fetch('/button', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ button, context: chatContext })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                removeLoading(loadingDiv);
+                addMessage(data.response, true);
+                chatContext = data.context;
+                if (data.buttons && data.buttons.length > 0) {
+                    addButtons(data.buttons);
+                }
+            } catch (error) {
+                removeLoading(loadingDiv);
+                addMessage("Oops! Something went wrong. Please contact us at phone number 977-9818676198 or email info@entrancegateway.com for assistance. (Error: " + error.message + ")", true);
+                console.error('Error:', error);
+            }
+        }
+
+        function checkEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
